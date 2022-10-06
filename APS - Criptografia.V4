@@ -41,7 +41,7 @@ else:
     exit()
 #Caso login e senha estiver errado, encerramento do programa#
 
-rotas = input("Deseja definir rotas?: (Y/N")
+rotas = input("Deseja definir rotas?: (Y/N) ")
 
 if rotas == 'y':
     usuario2 = input("Digite seu usuario: ")
