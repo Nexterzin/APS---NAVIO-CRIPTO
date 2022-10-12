@@ -42,11 +42,18 @@ else:
 #Caso login e senha estiver errado, encerramento do programa#
 
 rotas = input("Deseja definir rotas?: (Y/N) ")
+#Pergunta caso deseja inserir as rotas, apenas ADM podem inserir#
+
+ciphered1 = 'Rota não definida'
+ciphered2 = 'Rota não definida'
+plain1 = 'Rota não definida'
+plain2 = 'Rota não definida'
+#Modo criptografado e descriptografado caso o ADM não queira inserir rotas#
 
 if rotas == 'y':
-    usuario2 = input("Digite seu usuario: ")
+    usuario2 = input("Digite seu usuario de ADM: ")
 #Login - para ADM definirem rotas#
-    senha2 = input("Digite sua senha: ")
+    senha2 = input("Digite sua senha de ADM: ")
 #passwor - para ADM definirem rotas#
     key = 9
     #chave contando da primeira letra do alfabeto, no caso contando a partir da letra A (em maiusculo)#
@@ -62,51 +69,61 @@ if rotas == 'y':
     ciphered2 = caesar(original2, key, MODE_ENCRYPT)
     plain2 = caesar(ciphered2, key, MODE_DECRYPT)
     #mesmas informaçães da chave 9 (key 9)#
+
 elif rotas == 'n':
+#caso não queira inserir rotas#
     firstChoice = True
 #firstChoice variavel de controle para verificar os IF e ELIF#
 firstChoice = True
 while 'esc' != '4':
     sleepTime = 2.500
+    #Tempo para o menu aparecer novamente#
     while time.time():
         time.sleep(sleepTime) 
         #while para ter um tempo para aparecer as opções para o usuario, e caso ele digite o numero 4 ele encerre \
         # o programa, sleepTime é o tempo para a seleção aparecer#
         if firstChoice:
-            esc = input(print("De qual setor gostaria de entrar?\n1 - navios\n2 - rotas\n3 - funcionarios\n7 - Ver descriptografia\n4 - sair "))
+            esc = input(print("De qual setor gostaria de entrar?\n1 - navios\n2 - rotas\n3 - funcionarios\n4 - Ver descriptografia\n7 - sair "))
             firstChoice = True
         #Menu de opções para o usuario
         if esc == '1':
             print('Atena - Ativo\nMeniac - Em rota\nSafira - Manutenção\nJade - Ativo\nJasmin - Ativo\nKatrina - Em rota')
             firstChoice = True
+            #Apresenta os navios e os status dele#
         elif esc == '2':
             print('Meniac\nEm rota para',ciphered1,'\nKatrina\nEm rota para',ciphered2)
             firstChoice = True
+            #Apresenta as Rotas criptografadas#
         elif esc == '3':
             print('\n',ins1,'\n',ins2,'\n',ins3,'\n',ins4,'\n',ins5,'\n',ins6,'\n')
             firstChoice = True
-        elif esc == '4':
-            exit()
+            #apresenta os funcionarios#
         elif esc == '7':
-            usuario3 = input("digite seu usuario: ")
+            exit()
+            #Finaliza o programa#
+        elif esc == '4':
+            usuario3 = input("digite seu usuario de: ")
             senha3 = input("Digite sua senha: ")
+            #Login e senha do #
             if usuario3 == 'bruno' and senha3 == '123':
                 print('acesso permitido')
             else: 
                 print('acesso negado')
                 exit()
+                #Verificação do login e senha, caso incorreto o programa ira fechar#
             cod = input(print('Qual dados descriptografados voce quer ver?\n5 - rotas\n6 - funcionarios'))
             esc = " "
             firstChoice = False
+            #Menu de quais dados descriptografados gostaria de ver#
         elif cod == '5':
             print('Meniac\nEm rota para',plain1,'\nKatrina\nEm rota para',plain2)
             firstChoice = True
+            #Mostra as rotas descriptografadas#
         elif cod == '6':
             print('\n',ins1,'ID: 80.954.652-12','\n',ins2,'ID: 45.154.365-78','\n',ins3,'ID: 25.658.963-12','\n',ins4,'ID: 14.214.985-35','\n',ins5,'ID: 23.123.958-74','\n',ins6,'ID: 12.145.325-96\n')
             firstChoice = True
+            #Mostra o ID de todos os usuarios#
         else:
             print('Obrigado!')
             exit()
-#Operadores IF e ELSE, esc = 1: Mostra todos os navios e o status deles. esc = 2: mostra as rotas deles (criptografadas).\
-# esc = 3: mostra todos os funcionarios (*** ideia para mostrar identidades criptografadas ***) \
-# esc = 4: finaliza o programa. #
+            #Fecha o programa#
