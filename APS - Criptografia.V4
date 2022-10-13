@@ -1,3 +1,7 @@
+#senha inspetor - login: insp / senha: 123#
+#senha adm - login: adm / senha: 123#
+#senha usuario - login: bruno / senha: 123#
+
 MODE_ENCRYPT = 1
 MODE_DECRYPT = 0
 
@@ -55,6 +59,7 @@ if rotas == 'y':
 #Login - para ADM definirem rotas#
     senha2 = input("Digite sua senha de ADM: ")
 #passwor - para ADM definirem rotas#
+if usuario2 == 'adm' and senha2 == '123':
     key = 9
     #chave contando da primeira letra do alfabeto, no caso contando a partir da letra A (em maiusculo)#
     original1 = input("defina a Rota para Meniac: ")
@@ -68,8 +73,7 @@ if rotas == 'y':
     original2 = input("defina a Rota para Katrina: ")
     ciphered2 = caesar(original2, key, MODE_ENCRYPT)
     plain2 = caesar(ciphered2, key, MODE_DECRYPT)
-    #mesmas informaçães da chave 9 (key 9)#
-
+    #mesmas informaçães da chave 9 (key 9)# 
 elif rotas == 'n':
 #caso não queira inserir rotas#
     firstChoice = True
@@ -102,10 +106,10 @@ while 'esc' != '4':
             exit()
             #Finaliza o programa#
         elif esc == '4':
-            usuario3 = input("digite seu usuario de: ")
-            senha3 = input("Digite sua senha: ")
+            usuario3 = input("digite seu usuario de Inspetor: ")
+            senha3 = input("Digite sua senha de Inspetor: ")
             #Login e senha do #
-            if usuario3 == 'bruno' and senha3 == '123':
+            if usuario3 == 'insp' and senha3 == '123':
                 print('acesso permitido')
             else: 
                 print('acesso negado')
