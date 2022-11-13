@@ -1,6 +1,6 @@
-#senha inspetor - login: insp / senha: 123#
-#senha adm - login: adm / senha: 123#
-#senha usuario - login: bruno / senha: 123#
+#Login usuario: bruno / senha usuario: 123#
+#Login ADM: adm / senha ADM: 123#
+#Login Inspetor: insp / senha: 123#
 
 MODE_ENCRYPT = 1
 MODE_DECRYPT = 0
@@ -59,21 +59,27 @@ if rotas == 'y':
 #Login - para ADM definirem rotas#
     senha2 = input("Digite sua senha de ADM: ")
 #passwor - para ADM definirem rotas#
-if usuario2 == 'adm' and senha2 == '123':
-    key = 9
-    #chave contando da primeira letra do alfabeto, no caso contando a partir da letra A (em maiusculo)#
-    original1 = input("defina a Rota para Meniac: ")
-    #Informação original#
-    ciphered1 = caesar(original1, key, MODE_ENCRYPT)
-    #Informação criptografada#
-    plain1 = caesar(ciphered1, key, MODE_DECRYPT)
-    #informação descriptografada#
+    if usuario2 == 'adm' and senha2 == '123':
+        print('acesso permitido')
+        #verifica se o ADM está permitido a configurar as rotas#
+        key = 9
+        #chave contando da primeira letra do alfabeto, no caso contando a partir da letra A (em maiusculo)#
+        original1 = input("defina a Rota para Meniac: ")
+        #Informação original#
+        ciphered1 = caesar(original1, key, MODE_ENCRYPT)
+        #Informação criptografada#
+        plain1 = caesar(ciphered1, key, MODE_DECRYPT)
+        #informação descriptografada#
 
-    key = 6
-    original2 = input("defina a Rota para Katrina: ")
-    ciphered2 = caesar(original2, key, MODE_ENCRYPT)
-    plain2 = caesar(ciphered2, key, MODE_DECRYPT)
-    #mesmas informaçães da chave 9 (key 9)# 
+        key = 6
+        original2 = input("defina a Rota para Katrina: ")
+        ciphered2 = caesar(original2, key, MODE_ENCRYPT)
+        plain2 = caesar(ciphered2, key, MODE_DECRYPT)
+        #mesmas informaçães da chave 9 (key 9)#
+    else: 
+        print("Acesso negado")
+        exit()
+        #Caso o login de ADM esteja errado encerra o programa#
 elif rotas == 'n':
 #caso não queira inserir rotas#
     firstChoice = True
@@ -95,7 +101,7 @@ while 'esc' != '4':
             firstChoice = True
             #Apresenta os navios e os status dele#
         elif esc == '2':
-            print('Meniac\nEm rota para',ciphered1,'\nKatrina\nEm rota para',ciphered2)
+            print('Meniac\nEm rota para:',ciphered1,'\nKatrina\nEm rota para:',ciphered2)
             firstChoice = True
             #Apresenta as Rotas criptografadas#
         elif esc == '3':
@@ -106,21 +112,23 @@ while 'esc' != '4':
             exit()
             #Finaliza o programa#
         elif esc == '4':
-            usuario3 = input("digite seu usuario de Inspetor: ")
-            senha3 = input("Digite sua senha de Inspetor: ")
-            #Login e senha do #
+            usuario3 = input("digite seu usuario de inspetor: ")
+            senha3 = input("Digite sua senha: ")
+            #Login e senha do inspetor, apenas inspetores podem ver as rotas descriptografadas#
             if usuario3 == 'insp' and senha3 == '123':
                 print('acesso permitido')
+                #Caso usuario e senha estejam corretos, ira mostrar as rotas descriptografadas#
             else: 
                 print('acesso negado')
                 exit()
                 #Verificação do login e senha, caso incorreto o programa ira fechar#
             cod = input(print('Qual dados descriptografados voce quer ver?\n5 - rotas\n6 - funcionarios'))
+            #Menu para ver as rotas descriptografadas ou os IDs dos funcionarios#
             esc = " "
+            #colocar a varial "esc" como vazia para reconhecer a variavel "cod"#
             firstChoice = False
-            #Menu de quais dados descriptografados gostaria de ver#
         elif cod == '5':
-            print('Meniac\nEm rota para',plain1,'\nKatrina\nEm rota para',plain2)
+            print('Meniac\nEm rota para:',plain1,'\nKatrina\nEm rota para:',plain2)
             firstChoice = True
             #Mostra as rotas descriptografadas#
         elif cod == '6':
