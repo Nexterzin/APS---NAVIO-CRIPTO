@@ -24,12 +24,12 @@ import time
 print('snngc - sistema nacional de navegação da guarda costeira'.upper())
 #Titulo do programa#
 
-ins1 = 'bruno'
-ins2 = 'carlos'
-ins3 = 'natalia'
-ins4 = 'cesar'
-ins5 = 'caio'
-ins6 = 'sofia'
+ins1 = 'Bruno'
+ins2 = 'Carlos'
+ins3 = 'Natalia'
+ins4 = 'Cesar'
+ins5 = 'Caio'
+ins6 = 'Sofia'
 #nome dos funcionarios#
 
 usuario = input("Digite seu usuario: ")
@@ -38,10 +38,10 @@ senha = input("Digite sua senha: ")
 #passwor - padrão,qualquer usuario#
 
 if usuario == 'bruno' and senha == '123':
-    print('acesso permitido')
+    print('Acesso permitido')
 #Verificação do Login e senha do usuario - normal#
 else: 
-    print('acesso negado')
+    print('Acesso negado')
     exit()
 #Caso login e senha estiver errado, encerramento do programa#
 
@@ -60,11 +60,11 @@ if rotas == 'y':
     senha2 = input("Digite sua senha de ADM: ")
 #passwor - para ADM definirem rotas#
     if usuario2 == 'adm' and senha2 == '123':
-        print('acesso permitido')
+        print('Acesso permitido')
         #verifica se o ADM está permitido a configurar as rotas#
         key = 9
         #chave contando da primeira letra do alfabeto, no caso contando a partir da letra A (em maiusculo)#
-        original1 = input("defina a Rota para Meniac: ")
+        original1 = input("Defina a Rota para Meniac: ")
         #Informação original#
         ciphered1 = caesar(original1, key, MODE_ENCRYPT)
         #Informação criptografada#
@@ -72,7 +72,7 @@ if rotas == 'y':
         #informação descriptografada#
 
         key = 6
-        original2 = input("defina a Rota para Katrina: ")
+        original2 = input("Defina a Rota para Katrina: ")
         ciphered2 = caesar(original2, key, MODE_ENCRYPT)
         plain2 = caesar(ciphered2, key, MODE_DECRYPT)
         #mesmas informaçães da chave 9 (key 9)#
@@ -93,7 +93,7 @@ while 'esc' != '4':
         #while para ter um tempo para aparecer as opções para o usuario, e caso ele digite o numero 4 ele encerre \
         # o programa, sleepTime é o tempo para a seleção aparecer#
         if firstChoice:
-            esc = input(print("De qual setor gostaria de entrar?\n1 - navios\n2 - rotas\n3 - funcionarios\n4 - Ver descriptografia\n7 - sair "))
+            esc = input(print("De qual setor gostaria de entrar?\n1 - Navios\n2 - Rotas\n3 - Funcionarios\n4 - Ver Descriptografia\n7 - Sair "))
             firstChoice = True
         #Menu de opções para o usuario
         if esc == '1':
@@ -112,17 +112,17 @@ while 'esc' != '4':
             exit()
             #Finaliza o programa#
         elif esc == '4':
-            usuario3 = input("digite seu usuario de inspetor: ")
+            usuario3 = input("Digite seu usuario de inspetor: ")
             senha3 = input("Digite sua senha: ")
             #Login e senha do inspetor, apenas inspetores podem ver as rotas descriptografadas#
             if usuario3 == 'insp' and senha3 == '123':
-                print('acesso permitido')
+                print('Acesso permitido')
                 #Caso usuario e senha estejam corretos, ira mostrar as rotas descriptografadas#
             else: 
-                print('acesso negado')
+                print('Acesso negado')
                 exit()
                 #Verificação do login e senha, caso incorreto o programa ira fechar#
-            cod = input(print('Qual dados descriptografados voce quer ver?\n5 - rotas\n6 - funcionarios'))
+            cod = input(print('Qual dados descriptografados voce quer ver?\n5 - Rotas\n6 - Funcionarios'))
             #Menu para ver as rotas descriptografadas ou os IDs dos funcionarios#
             esc = " "
             #colocar a varial "esc" como vazia para reconhecer a variavel "cod"#
@@ -136,6 +136,5 @@ while 'esc' != '4':
             firstChoice = True
             #Mostra o ID de todos os usuarios#
         else:
-            print('Obrigado!')
             exit()
             #Fecha o programa#
